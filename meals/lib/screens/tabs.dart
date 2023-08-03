@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/meals.dart';
@@ -25,7 +24,7 @@ class _TabScreenState extends State<TabsScreen> {
     Widget activePage = const CategoriesScreen();
     var activePageTitle = 'Categories';
     if (_selectedPageIndex == 1) {
-      activePage = MealsScreen(title: 'Favorites', meals: []);
+      activePage = MealsScreen(meals: []);
       activePageTitle = 'Your Favorites';
     }
     return Scaffold(
@@ -34,7 +33,9 @@ class _TabScreenState extends State<TabsScreen> {
       ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.amber,
         onTap: _selectPage,
+        currentIndex: _selectedPageIndex,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.set_meal), label: 'Categories'),
